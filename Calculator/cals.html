@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            background: #f2f2f2;
+        }
+        .calculator {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            
+        }
+        #display {
+            width: 220px;
+            height: 50px;
+            font-size: 22px;
+            text-align: right;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 8px;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            background: #e0e0e0;
+        }
+        button:hover {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div id="display"></div>
+
+       
+        <p>
+            <button onclick="update('1')">1</button>
+            <button onclick="update('2')">2</button>
+            <button onclick="update('3')">3</button>
+            <button onclick="update('+')">+</button>
+        </p>
+        <p>
+            <button onclick="update('4')">4</button>
+            <button onclick="update('5')">5</button>
+            <button onclick="update('6')">6</button>
+            <button onclick="update('-')">-</button>
+        </p>
+        <p>
+            <button onclick="update('7')">7</button>
+            <button onclick="update('8')">8</button>
+            <button onclick="update('9')">9</button>
+            <button onclick="update('*')">*</button>
+        </p>
+        <p>
+            <button onclick="update('.')">.</button>
+            <button onclick="update('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()">C</button>
+        </p>
+    </div>
+
+    <script>
+        let calculation = '';
+
+        function update(value) {
+            calculation += value;
+            document.getElementById('display').innerText = calculation;
+        }
+
+        function calculate() {
+            try {
+                calculation = eval(calculation).toString();
+                document.getElementById('display').innerText = calculation;
+            } catch {
+                document.getElementById('display').innerText = 'Error';
+                calculation = '';
+            }
+        }
+
+        function clearDisplay() {
+            calculation = '';
+            document.getElementById('display').innerText = calculation;
+        }
+
+    </script>
+</body>
+</html>
